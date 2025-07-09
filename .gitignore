@@ -1,2 +1,42 @@
-.env
+# Byte-compiled / optimized / DLL files
 __pycache__/
+*.py[cod]
+*.so
+
+# C extensions
+*.c
+
+# Distribution / packaging
+.Python
+*.egg-info/
+dist/
+build/
+
+# Logs and debug files
+*.log
+
+# Virtual environment
+venv/
+.env
+.python-version
+
+# IDE and editor folders
+.vscode/
+.idea/
+
+# MacOS system files
+.DS_Store
+
+# Output & HTML artifacts
+*.html
+*.txt
+
+# Mongo playground scripts
+*.mongodb.js
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Dashboard cache (if any)
+*.db
+*.sqlite3
