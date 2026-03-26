@@ -8,9 +8,12 @@ load_dotenv()
 # =========================
 # MongoDB Configuration
 # =========================
-MONGO_URI = os.getenv("MONGO_URI", "REMOVEDadityabramhe7:Adi031204@cluster0.is9smo4.mongodb.net/job_posting_modified")
+MONGO_URI = os.getenv("MONGO_URI")
 DB_NAME = os.getenv("DB_NAME", "job_posting_modified")
 RAW_JOBS_COLLECTION = "raw_jobs"
+
+if not MONGO_URI:
+    raise ValueError("MONGO_URI not set in environment variables")
 
 # =========================
 # Source Registry Loader
@@ -27,7 +30,5 @@ def load_sources():
             "sources.json not found. Please create config/sources.json"
         )
 
-    with open(config_path, "r") as f:
-        sources = json.load(f)
-
-    return sources
+    with open(config_path, "r", encoding="utf-8") as f:
+        return json.load(f)
