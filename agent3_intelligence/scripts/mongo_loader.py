@@ -7,7 +7,9 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-MONGO_URL = "REMOVEDadityabramhe7:Adi031204@cluster0.is9smo4.mongodb.net/job_posting_modified"
+import os
+
+MONGO_URI = os.getenv("MONGO_URI")
 
 
 def load_data():
