@@ -1,15 +1,32 @@
+# mongo_loader.py
+
 import pandas as pd
 from pymongo import MongoClient
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+MONGO_URL = "REMOVEDadityabramhe7:Adi031204@cluster0.is9smo4.mongodb.net/job_posting_modified"
 
 
-def load_data(limit=16):
-    client = MongoClient("REMOVEDadityabramhe7:C3kg0TDi21QaKOAM@jobposting.tgcylyz.mongodb.net/")
-    db = client["JobPosting"]  # ✅ Must match what you used in Agent 2
-    collection = db["ProcessedSignals"]  # ✅ Should be the same collection Agent 2 inserts into
+def load_data():
+    client = MongoClient(MONGO_URL)
 
-    data = list(collection.find().sort([("_id", -1)]).limit(limit))
+    # ✅ FIXED DB + COLLECTION
+    db = client["job_posting_modified"]
+    collection = db["job_signals"]
+
+    data = list(collection.find())
+
+    if not data:
+        print("⚠️ No data found in job_signals")
+        return pd.DataFrame()
+
     df = pd.DataFrame(data)
 
-    print(f"✅ Loaded {len(df)} job posts from MongoDB.")
-    return df
+    # clean Mongo _id
+    if "_id" in df.columns:
+        df.drop(columns=["_id"], inplace=True)
 
+    return df

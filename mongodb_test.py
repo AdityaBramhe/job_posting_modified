@@ -1,13 +1,10 @@
 from pymongo import MongoClient
 
-# Replace this with your actual MongoDB URI
-MONGO_URI = "REMOVED<username>:<password>@jobposting.tgcylxz.mongodb.net/?retryWrites=true&w=majority"
+MONGO_URI = "REMOVEDadityabramhe7:YOUR_PASSWORD@cluster0.is9smo4.mongodb.net/"
 
 try:
-    client = MongoClient(MONGO_URI, serverSelectionTimeoutMS=5000)  # 5-second timeout
-    db_names = client.list_database_names()  # Tries to connect
-    print("✅ MongoDB connection successful.")
-    print("Databases found:", db_names)
+    client = MongoClient(MONGO_URI)
+    db = client["JobPosting"]
+    print("✅ Connected to MongoDB!")
 except Exception as e:
-    print("❌ Failed to connect to MongoDB.")
-    print("Error:", e)
+    print("❌ Error:", e)

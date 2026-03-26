@@ -1,5 +1,7 @@
-{{ company }} is scaling up its {{ department }} department with {{ count }} job postings.
-{% if urgent == "Yes" %}Urgency: High.{% else %}Urgency: No.{% endif %}
-{% if pain == "Yes" %}Pain points: Detecting signs of legacy systems or modernization projects.{% else %}No significant pain points detected.{% endif %}
-{% if skills and skills != "N/A" %}Tech stack includes: {{ skills }}.{% else %}No specific tech stack mentioned or detected.{% endif %}
-The company is looking to expand its tech portfolio.
+{{ company }} is scaling its {{ department }} department with {{ count }} open roles.
+
+Urgency detected: {{ urgent }}.
+Legacy systems or modernization needs: {{ pain }}.
+Recent hiring momentum: {{ recent }}.
+Senior-level demand: {{ senior_roles }}.
+Tech Stack in demand: {{ skills }}.
